@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Matrix.h"
 #include <math.h>
+#include <vector>
 
 //constructor without parameters
 Matrix::Matrix ()
@@ -9,14 +10,27 @@ Matrix::Matrix ()
     number_lines = 0;
 }
 
-//constructor with parameters
-Matrix::Matrix (float lines, float columns)
+//constructor with two parameters
+Matrix::Matrix (int lines, int columns)
 {
     number_lines = lines;
     number_columns = columns;
     matrix.resize(number_lines);
-    for(int i = 0 ; i < number_lines ; ++i)
+    for(int i = 0 ; i < number_lines ; i++)
         matrix[i].resize(number_columns);
+}
+
+//constructor with three parameters
+Matrix::Matrix(int lines,int columns, std::vector< std::vector <float> > a)
+{
+    number_lines = lines;
+    number_columns = columns;
+    matrix.resize(number_lines);
+    for(int i = 0 ; i < number_lines ; i++)
+        matrix[i].resize(number_columns);
+    for(int i = 0 ; i < number_lines ; i++)
+        for(int j = 0 ; j < number_columns ; j++)
+            matrix[i][j]=a[i][j];
 }
 
 //the cin of the class
@@ -103,6 +117,12 @@ Matrix& Matrix::operator* (Matrix &x)
             }
     }
     return *aux;
+}
+
+//getter for matrix
+std::vector < std::vector <float>> Matrix::getMatrix()
+{
+    return matrix;
 }
 
 //calculating the determinant of a matrix

@@ -7,6 +7,9 @@ using namespace std;
 
 int main()
 {
+    Matrix raluca;
+    cin>>raluca;
+    cout<<raluca.star();
     try
     {
         cout<<"1. The sum of two matrices" << endl;
